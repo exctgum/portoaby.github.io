@@ -3,6 +3,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeToggle = document.querySelector('#dark-mode-toggle');
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const darkModeToggle = document.querySelector('#dark-mode-toggle');
+
+    // Function to toggle dark mode
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        // Save user preference to local storage
+        localStorage.setItem('darkModeEnabled', document.body.classList.contains('dark-mode'));
+    }
+
+    // Check user's previous preference and set initial mode
+    const isDarkModeEnabled = JSON.parse(localStorage.getItem('darkModeEnabled'));
+    if (isDarkModeEnabled) {
+        document.body.classList.add('dark-mode');
+    }
+
+    // Add event listener to the toggle button
+    darkModeToggle.addEventListener('click', toggleDarkMode);
+});
+
     });
 });
 
